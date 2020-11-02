@@ -25,6 +25,7 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - aws ecs describe-task-definition --task-definition michael-lab-2020 | jq '.taskDefinition' > taskdef.json
+      - cat taskdef.json
       - envsubst < appspec_template.yaml > appspec.yaml
 artifacts:
     files:
